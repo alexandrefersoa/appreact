@@ -1,24 +1,19 @@
 import { BrowserRouter } from 'react-router-dom';
-import { AppRoutes } from './routes';
-import { ThemeProvider } from '@emotion/react';
-import { DarkTheme, LightTheme } from './themes';
-import { AppThemeProvider } from './contexts/ThemeContext';
-import { Drawer, Menu } from '@mui/material';
-import { MenuLateral } from './components';
 
+import { AppThemeProvider, DrawerProvider } from './contexts';
+import { MenuLateral } from './components';
+import { AppRoutes } from './routes';
 
 export const App = () => {
   return (
     <AppThemeProvider>
-
-      <BrowserRouter>
-
-        <MenuLateral>
-          <AppRoutes />
-        </MenuLateral>
-
-      </BrowserRouter>
-
+      <DrawerProvider>
+        <BrowserRouter>
+          <MenuLateral>
+            <AppRoutes/>
+          </MenuLateral>
+        </BrowserRouter>
+      </DrawerProvider>
     </AppThemeProvider>
   );
-}
+};
